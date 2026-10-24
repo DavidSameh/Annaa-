@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anna ❤</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating hearts background -->
+  <div id="hearts"></div>
+
+  <!-- Song: put your file next to index.html and name it song.mp3 -->
+  <audio id="song" src="song.mp3" loop preload="auto"></audio>
+
+  <!-- ========== LOGIN PAGE ========== -->
+  <section id="login" class="page active">
+    <div class="login-card">
+      <div class="photo"></div>
+      <div class="login-body">
+        <h1 class="script">Hello, Anna ❤</h1>
+        <p class="sub">Someone has a secret for you...<br>Enter our special date to open it.</p>
+
+        <input type="text" id="dateInput" placeholder="Day / Month  (example: 1/1)" autocomplete="off">
+        <p id="error" class="error"></p>
+
+        <button id="enterBtn" class="love-btn">Enter my heart 💗</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOME PAGE ========== -->
+  <section id="home" class="page">
+    <button id="musicBtn" class="music-btn" title="Play / Pause">🎵</button>
+
+    <div class="home-wrap">
+      <h1 class="script big">Dear Anna,</h1>
+
+      <div class="msg">From the very first day I saw you at school, something pulled me toward you. I couldn't explain it then, and honestly I still can't. ✨</div>
+      <div class="msg">Every time you smiled, my whole day became brighter. Your smile became my favorite place to be. 🌸</div>
+      <div class="msg">I tried to act normal, but my heart always knew your name before I did. 💓</div>
+      <div class="msg">You're kind, you're beautiful, and you have a light that makes everyone around you feel warm. I'm lucky just to know you.</div>
+      <div class="msg">Anna, I don't know how to say this perfectly, so I'll say it simply...</div>
+
+      <h2 class="script final">I love you, Anna ❤</h2>
+
+      <div class="msg last">Thank you for being you. Whatever your answer is, you'll always be special to me. 🌹</div>
+
+      <div class="btn-row">
+        <button id="heartBurst" class="love-btn ghost">Tap for a little love 💞</button>
+        <button id="nextBtn" class="love-btn">Go next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GIFT PAGE ========== -->
+  <section id="gift" class="page">
+    <button id="musicBtn2" class="music-btn" title="Play / Pause">🎵</button>
+
+    <div class="gift-wrap">
+      <h2 class="script gift-title">I have something for you...</h2>
+
+      <div class="heart-box" id="heartBox" role="button" aria-label="Open the heart">
+        <div class="glow"></div>
+
+        <!-- text that rises out of the box -->
+        <div class="love-text script" id="loveText">I love you</div>
+
+        <!-- base (bottom half of the heart) -->
+        <svg class="part base" viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gBase" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff4d79"/>
+              <stop offset="100%" stop-color="#b0003a"/>
+            </linearGradient>
+            <clipPath id="clipBase"><rect x="0" y="62" width="200" height="120"/></clipPath>
+          </defs>
+          <g clip-path="url(#clipBase)">
+            <path d="M100 170 C20 110 0 70 0 45 C0 18 22 0 50 0 C75 0 92 14 100 32 C108 14 125 0 150 0 C178 0 200 18 200 45 C200 70 180 110 100 170 Z" fill="url(#gBase)"/>
+            <!-- ribbon -->
+            <rect x="88" y="62" width="24" height="120" fill="#ffd6e0" opacity=".9"/>
+            <rect x="0" y="62" width="200" height="6" fill="#8e0030" opacity=".35"/>
+          </g>
+        </svg>
+
+        <!-- lid (top lobes of the heart) -->
+        <div class="lid" id="lid">
+          <svg class="part" viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gLid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff8aa8"/>
+                <stop offset="100%" stop-color="#ff1744"/>
+              </linearGradient>
+              <clipPath id="clipLid"><rect x="0" y="-5" width="200" height="67"/></clipPath>
+            </defs>
+            <g clip-path="url(#clipLid)">
+              <path d="M100 170 C20 110 0 70 0 45 C0 18 22 0 50 0 C75 0 92 14 100 32 C108 14 125 0 150 0 C178 0 200 18 200 45 C200 70 180 110 100 170 Z" fill="url(#gLid)"/>
+              <rect x="88" y="0" width="24" height="70" fill="#ffd6e0" opacity=".9"/>
+              <ellipse cx="55" cy="22" rx="16" ry="8" fill="#fff" opacity=".25" transform="rotate(-25 55 22)"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <p class="tap-hint" id="tapHint">Tap the heart to open it 💝</p>
+      <p class="after-text script" id="afterText">Forever yours ❤</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2b0a1e, #6b0f3a, #c2185b, #ff6f91);
+  background-size: 300% 300%;
+  animation: bgMove 14s ease infinite;
+  color: #fff;
+  overflow-x: hidden;
+}
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.script { font-family: 'Great Vibes', cursive; font-weight: 400; }
+
+/* ---------- floating hearts ---------- */
+#hearts {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.heart {
+  position: absolute;
+  bottom: -60px;
+  color: #ff1744;
+  text-shadow: 0 0 10px rgba(255, 23, 68, .6);
+  animation: floatUp linear forwards;
+  opacity: .85;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .9; }
+  50%  { transform: translateY(-55vh) translateX(30px) rotate(15deg); }
+  100% { transform: translateY(-115vh) translateX(-30px) rotate(-15deg); opacity: 0; }
+}
+
+/* ---------- pages ---------- */
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 24px;
+}
+.page.active { display: flex; justify-content: center; align-items: center; animation: fadeIn 1.2s ease; }
+#home.active { align-items: flex-start; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
+
+/* ---------- login ---------- */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+/* Romantic image: drop "romantic.jpg" next to index.html.
+   If the file isn't there, the gradient below is shown instead. */
+.photo {
+  height: 240px;
+  background:
+    url('romantic.jpg') center/cover no-repeat,
+    radial-gradient(circle at 30% 30%, #ffb6c9, transparent 55%),
+    radial-gradient(circle at 70% 70%, #ff4d79, transparent 55%),
+    linear-gradient(135deg, #8e1b4f, #ff6f91);
+  position: relative;
+}
+.photo::after {
+  content: '❤';
+  position: absolute; inset: 0;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 80px;
+  color: rgba(255, 255, 255, .85);
+  text-shadow: 0 0 25px #ff1744;
+  animation: beat 1.4s infinite;
+  z-index: 0;
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.18); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.12); }
+}
+
+.login-body { padding: 28px 26px 32px; text-align: center; }
+.login-body h1 { font-size: 46px; margin-bottom: 8px; }
+.sub { font-size: 14px; font-weight: 300; line-height: 1.7; margin-bottom: 22px; opacity: .95; }
+
+#dateInput {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, .4);
+  background: rgba(255, 255, 255, .15);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  transition: .3s;
+}
+#dateInput::placeholder { color: rgba(255, 255, 255, .7); }
+#dateInput:focus { border-color: #fff; box-shadow: 0 0 18px rgba(255, 255, 255, .4); }
+
+.error { min-height: 22px; margin: 10px 0; font-size: 13px; color: #ffd6e0; }
+
+.love-btn {
+  background: linear-gradient(135deg, #ff1744, #ff5c8a);
+  color: #fff;
+  border: none;
+  padding: 14px 34px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 23, 68, .55);
+  transition: .3s;
+}
+.love-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 32px rgba(255, 23, 68, .75); }
+.love-btn:active { transform: scale(.97); }
+
+.shake { animation: shake .4s; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* ---------- home ---------- */
+.home-wrap {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 50px 0 80px;
+  text-align: center;
+}
+.big { font-size: 64px; margin-bottom: 30px; text-shadow: 0 0 20px rgba(255, 255, 255, .4); }
+
+.msg {
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  font-size: 17px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+.msg.show { opacity: 1; transform: translateY(0); }
+
+.final {
+  font-size: 58px;
+  margin: 35px 0;
+  color: #fff;
+  text-shadow: 0 0 25px #ff1744, 0 0 50px #ff1744;
+  opacity: 0;
+  transform: scale(.8);
+  transition: all 1.2s ease;
+}
+.final.show { opacity: 1; transform: scale(1); animation: beat 2s infinite; }
+
+.music-btn {
+  position: fixed;
+  top: 18px; right: 18px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, .2);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+}
+.music-btn.paused { opacity: .5; }
+
+/* ---------- buttons row ---------- */
+.btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+.love-btn.ghost {
+  background: rgba(255, 255, 255, .15);
+  border: 1px solid rgba(255, 255, 255, .4);
+  box-shadow: none;
+}
+
+/* ---------- gift page ---------- */
+#gift.active { align-items: center; }
+.gift-wrap { width: 100%; max-width: 520px; margin: 0 auto; text-align: center; }
+.gift-title { font-size: 48px; margin-bottom: 70px; text-shadow: 0 0 18px rgba(255, 255, 255, .35); }
+
+.heart-box {
+  position: relative;
+  width: 260px;
+  height: 236px;
+  margin: 0 auto;
+  cursor: pointer;
+  perspective: 900px;
+  animation: idle 2.4s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.heart-box.open { animation: none; cursor: default; }
+@keyframes idle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.04); }
+}
+
+.heart-box .part { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; overflow: visible; filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .45)); }
+.heart-box .base { z-index: 3; }
+
+.lid {
+  position: absolute; inset: 0;
+  z-index: 4;
+  transform-origin: 50% 35%;           /* hinge at the cut line */
+  transition: transform 2.2s cubic-bezier(.22, .8, .25, 1), opacity 1.6s ease 1s;
+  transform-style: preserve-3d;
+}
+.heart-box.open .lid {
+  transform: translateY(-20px) rotateX(-118deg);
+  opacity: .0;
+}
+
+.glow {
+  position: absolute;
+  left: 50%; top: 26%;
+  width: 190px; height: 190px;
+  margin-left: -95px;
+  background: radial-gradient(circle, rgba(255, 255, 255, .95), rgba(255, 120, 160, .5) 45%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(.3);
+  transition: opacity 2s ease .4s, transform 2.4s ease .4s;
+  z-index: 1;
+}
+.heart-box.open .glow { opacity: 1; transform: scale(1.5); }
+
+.love-text {
+  position: absolute;
+  left: 50%; top: 30%;
+  width: 360px; margin-left: -180px;
+  font-size: 74px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 18px #ff1744, 0 0 40px #ff1744;
+  opacity: 0;
+  transform: translateY(40px) scale(.4);
+  transition: transform 2.6s cubic-bezier(.2, .9, .25, 1) 1s, opacity 1.8s ease 1.1s;
+  z-index: 2;
+  pointer-events: none;
+}
+.heart-box.open .love-text {
+  opacity: 1;
+  transform: translateY(-165px) scale(1);
+  animation: floaty 3s ease-in-out 4s infinite;
+}
+@keyframes floaty {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -10px; }
+}
+
+.tap-hint { margin-top: 38px; font-size: 15px; opacity: .9; animation: blink 1.8s infinite; transition: opacity .8s; }
+.tap-hint.hide { opacity: 0 !important; animation: none; }
+@keyframes blink { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+
+.after-text {
+  margin-top: 30px;
+  font-size: 40px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 1.6s ease 3.2s;
+}
+.after-text.show { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 480px) {
+  .gift-title { font-size: 38px; margin-bottom: 90px; }
+  .love-text { font-size: 60px; width: 300px; margin-left: -150px; }
+  .big { font-size: 48px; }
+  .final { font-size: 44px; }
+  .msg { font-size: 15px; }
+}
